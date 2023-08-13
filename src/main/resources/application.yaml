@@ -1,0 +1,62 @@
+greeting:
+  message: "hello"
+
+quarkus:
+
+  application:
+    name: template
+    version: 0.1.0
+
+  quinoa:
+    ui-dir: ./frontend/
+    dev-server:
+      port: 4200
+    enable-spa-routing: true
+    run-tests: false
+    package-manager-install:
+      node-version: "18.16.1"
+      "~": true
+
+  http:
+    port: 8080
+    enable-compression: true
+    auth:
+      permission:
+        authenticated:
+          policy: authenticated
+          paths: /*
+
+  oidc:
+    enabled: true
+    authentication:
+      user-info-required: true
+    application-type: hybrid
+
+  resteasy-reactive:
+    path: /api
+
+  datasource:
+    db-kind: postgresql
+    username: recipes
+    password: recipes
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/template
+
+  hibernate-orm:
+    log:
+      sql: false
+
+  tls:
+    trust-all: true
+
+  keycloak:
+    devservices:
+      enabled: true
+      port: 6789
+      show-logs: false
+      users:
+        admin: admin
+        alice: alice
+      roles:
+        admin: admin, systemadmin
+        alice: user
