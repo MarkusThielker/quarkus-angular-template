@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HelloService } from '../../shared/service/hello.service';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  data: string = 'Loading...';
+
+  constructor(private helloService: HelloService) {
+  }
+
+  ngOnInit() {
+    setTimeout(() => this.getHello(), 2500);
+  }
+
+  getHello() {
+    this.helloService.getHello().subscribe((data) => {
+      this.data = data;
+    });
+  }
 }
