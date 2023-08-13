@@ -8,7 +8,7 @@ quarkus:
     version: 0.1.0
 
   quinoa:
-    ui-dir: ./frontend/
+    ui-dir: ../frontend/
     dev-server:
       port: 4200
     enable-spa-routing: true

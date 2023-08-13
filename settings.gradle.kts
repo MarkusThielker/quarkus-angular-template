@@ -12,3 +12,5 @@ pluginManagement {
 }
 
 rootProject.name="template"
+
+include("service")
