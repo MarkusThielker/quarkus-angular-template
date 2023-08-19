@@ -6,14 +6,14 @@ Thereby the Angular application is built and served by the Quarkus backend using
 ## Getting Started
 
 To run the application and start developing, you can use the IntelliJ IDEA run configuration `Quarkus Angular Template`.
-This configuration will also start a Postgres database in a Docker container.
-
-If you do not use IntelliJ IDEA, you can run the application using the following command:
+If you want to run the application from the command line, you can use the following command:
 
 ```shell
-docker compose up -d postgres # start the database
 ./gradlew quarkusDev # start quarkus in dev mode
 ```
+
+You need to have Docker installed, since the Quarkus application will start multiple containers for data storage and
+authentication.
 
 ### What happens on start?
 
