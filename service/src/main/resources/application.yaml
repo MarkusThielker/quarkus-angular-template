@@ -32,7 +32,7 @@ quarkus:
       user-info-required: true
     application-type: hybrid
 
-  resteasy-reactive:
+  resteasy:
     path: /api
 
   datasource:
