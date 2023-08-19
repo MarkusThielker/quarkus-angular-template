@@ -36,13 +36,15 @@ quarkus:
     path: /api
 
   datasource:
-    db-kind: postgresql
-    username: recipes
-    password: recipes
-    jdbc:
-      url: jdbc:postgresql://localhost:5432/template
+    devservices:
+      enabled: true
+      port: 5432
+      volumes:
+        "./postgres-data": /var/lib/postgresql/data
 
   hibernate-orm:
+    database:
+      generation: drop-and-create
     log:
       sql: false
 
