@@ -2,3 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-primary {
+  @apply w-full px-2 py-1 bg-orange-500 rounded-full text-white font-semibold;
+}

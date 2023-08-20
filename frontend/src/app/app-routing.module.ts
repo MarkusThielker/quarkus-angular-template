@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from "./pages/home/home.component";
+import { TaskComponent } from './pages/task/task.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: TaskComponent,
   },
   {
     path: '**',
