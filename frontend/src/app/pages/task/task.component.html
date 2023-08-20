@@ -1,11 +1,13 @@
-<div class="flex flex-col max-w-xl mx-auto mt-16 space-y-2">
+<div class="max-w-lg mx-auto mt-8 space-y-2">
 
-  <button (click)="createTask()" class="bg-orange-500 rounded-full text-white font-semibold py-1">Create</button>
+  <button (click)="createTask()" class="btn-primary">Create</button>
 
-  <div *ngFor="let task of data" class="flex flex-row w-full border rounded items-center justify-start p-4">
-    <div class="flex flex-col">
-      <input (ngModelChange)="updateTask(task)" [(ngModel)]="task.name" class="text-lg font-semibold"/>
-      <input (ngModelChange)="updateTask(task)" [(ngModel)]="task.description" class="text-md text-neutral-500"/>
+  <div *ngFor="let task of data" class="flex flex-row p-4 space-x-4 border rounded items-center justify-start">
+    <div class="flex flex-col w-full">
+      <input (ngModelChange)="updateTask(task)" [(ngModel)]="task.name" class="text-lg font-semibold"
+             placeholder="Enter title..."/>
+      <input (ngModelChange)="updateTask(task)" [(ngModel)]="task.description" class="text-md text-neutral-500"
+             placeholder="Enter description..."/>
     </div>
     <div class="flex flex-row items-center space-x-2">
       <input (change)="updateTask(task)" [(ngModel)]="task.checked" type="checkbox"/>
