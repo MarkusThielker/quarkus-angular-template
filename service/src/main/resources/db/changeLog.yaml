@@ -1,0 +1,40 @@
+databaseChangeLog:  
+    - changeSet:
+        id: 1
+        author: markusthielker
+        changes:
+            - createTable:
+                tableName: task
+                columns:
+                    -  column:
+                        name:  id
+                        type:  bigint
+                        constraints:
+                            primaryKey:  true
+                            nullable:  false
+                    -  column:
+                        name:  name
+                        type:  varchar(255)
+                    -  column:
+                        name:  description
+                        type:  varchar(255)
+                        constraints:
+                            nullable:  false
+                    -  column:
+                        name:  checked
+                        type:  boolean
+                        defaultValueBoolean:  false
+                        constraints:
+                            nullable: false
+                    -  column:
+                        name:  created_at
+                        type:  timestamp
+                        defaultValueComputed:  CURRENT_TIMESTAMP
+                        constraints:
+                            nullable: false
+                    -  column:
+                        name:  updated_at
+                        type:  timestamp
+                        defaultValueComputed:  CURRENT_TIMESTAMP
+                        constraints:
+                              nullable:  false
