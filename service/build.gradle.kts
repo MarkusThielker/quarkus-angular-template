@@ -32,7 +32,7 @@ dependencies {
 
     // Database
     implementation("io.quarkus:quarkus-jdbc-postgresql")
-    implementation("io.quarkus:quarkus-flyway")
+    implementation("io.quarkus:quarkus-liquibase")
 
     // Authentication
     implementation("io.quarkus:quarkus-oidc")
