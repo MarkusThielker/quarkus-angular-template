@@ -39,6 +39,13 @@ quarkus:
       volumes:
         "./postgres-data": /var/lib/postgresql/data
 
+  liquibase:
+    clean-at-start: true
+    migrate-at-start: true
+    change-log: db/changeLog.yaml
+    database-change-log-lock-table-name: database_changelog_lock
+    database-change-log-table-name: database_changelog
+
   hibernate-orm:
     database:
       generation: drop-and-create
