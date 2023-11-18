@@ -19,6 +19,9 @@ quarkus:
     enable-compression: true
     auth:
       permission:
+        openapi:
+          policy: permit
+          paths: /q/openapi
         authenticated:
           policy: authenticated
           paths: /*
@@ -54,6 +57,11 @@ quarkus:
 
   tls:
     trust-all: true
+
+  smallrye-openapi:
+    path: /q/openapi
+    scan:
+      packages: dev.thielker.template
 
   keycloak:
     devservices:

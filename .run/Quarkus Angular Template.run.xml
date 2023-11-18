@@ -1,28 +1,29 @@
 <component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="Quarkus Angular Template" type="QuarkusRunConfigurationType"
-                   factoryName="Quarkus">
-        <module name="template.service.main"/>
-        <QsGradleRunConfiguration>
-            <ExternalSystemSettings>
-                <option name="executionName"/>
-                <option name="externalProjectPath" value="$PROJECT_DIR$/service"/>
-                <option name="externalSystemIdString" value="GRADLE"/>
-                <option name="scriptParameters" value=""/>
-                <option name="taskDescriptions">
-                    <list/>
-                </option>
-                <option name="taskNames">
-                    <list/>
-                </option>
-                <option name="vmOptions" value=""/>
-            </ExternalSystemSettings>
-            <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-            <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-            <DebugAllEnabled>false</DebugAllEnabled>
-            <RunAsTest>false</RunAsTest>
-        </QsGradleRunConfiguration>
-        <method v="2">
-            <option name="Make" enabled="true"/>
-        </method>
-    </configuration>
+  <configuration default="false" name="Quarkus Angular Template" type="QuarkusRunConfigurationType" factoryName="Quarkus">
+    <module name="template.service.main" />
+    <QsGradleRunConfiguration>
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/service" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="quarkusDev" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+    </QsGradleRunConfiguration>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
 </component>

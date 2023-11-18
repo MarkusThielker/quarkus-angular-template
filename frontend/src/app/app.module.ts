@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskComponent } from './pages/task/task.component';
 import { FormsModule } from '@angular/forms';
+import { ApiModule, Configuration } from "./shared/api/generated";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,11 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ApiModule.forRoot(() => {
+      return new Configuration({
+        basePath: `http://localhost:8080`,
+      });
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

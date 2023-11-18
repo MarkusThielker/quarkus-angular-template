@@ -1,0 +1,10 @@
+{
+  "inputSpec": "http://localhost:8080/q/openapi",
+  "generatorName": "typescript-angular",
+  "output": "./frontend/src/app/shared/api/generated",
+  "skipValidateSpec": "true",
+  "additionalProperties": {
+    "npmName": "angular-template-client",
+    "ngVersion": "16.1.0"
+  }
+}

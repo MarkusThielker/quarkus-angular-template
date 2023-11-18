@@ -41,6 +41,9 @@ dependencies {
     // Frontend
     implementation("io.quarkiverse.quinoa:quarkus-quinoa:2.0.8")
 
+    // OpenAPI
+    implementation("io.quarkus:quarkus-smallrye-openapi")
+
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
@@ -70,4 +73,12 @@ allOpen {
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
     kotlinOptions.javaParameters = true
+}
+
+tasks.register("generateApi") {
+    doLast {
+        exec {
+            commandLine("openapi-generator-cli", "generate", "-g", "typescript-angular", "-i", "http://localhost:8080/q/openapi", "-o", "../frontend/src/app/shared/api/generated", "--skip-validate-spec")
+        }
+    }
 }
