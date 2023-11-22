@@ -1,8 +1,10 @@
 package dev.thielker.template.task.boundary
 
-import dev.thielker.template.task.TaskDto
+import dev.thielker.template.task.dto.TaskDto
 import dev.thielker.template.task.control.TaskService
-import dev.thielker.template.task.entity.Task
+import dev.thielker.template.task.dto.CreateTaskRequest
+import dev.thielker.template.task.dto.UpdateTaskRequest
+import dev.thielker.template.task.mapper.TaskMapper
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
 import jakarta.ws.rs.DELETE
@@ -19,25 +21,30 @@ class TaskResource {
     @Inject
     private lateinit var taskService: TaskService
 
+    @Inject
+    private lateinit var taskMapper: TaskMapper
+
     @GET
     fun getAll(): List<TaskDto> {
-        return taskService.getAll()
+        return taskService.getAll().map { taskMapper.toTaskDto(it) }
     }
 
     @GET
     @Path("/{id}")
     fun getByPublicId(@PathParam("id") id: Long): TaskDto? {
-        return taskService.getByPublicId(id)
+        return taskService.getByPublicId(id)?.let { taskMapper.toTaskDto(it) }
     }
 
     @POST
-    fun create(task: Task): TaskDto {
-        return taskService.create(task)
+    fun create(request: CreateTaskRequest): TaskDto {
+        val persisted = taskService.create(taskMapper.toTask(request))
+        return taskMapper.toTaskDto(persisted)
     }
 
     @PUT
-    fun update(task: Task): TaskDto {
-        return taskService.update(task)
+    fun update(request: UpdateTaskRequest): TaskDto {
+        val persisted = taskService.update(taskMapper.toTask(request))
+        return taskMapper.toTaskDto(persisted)
     }
 
     @DELETE
