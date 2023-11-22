@@ -1,6 +1,5 @@
 package dev.thielker.template.task.control
 
-import dev.thielker.template.task.TaskDto
 import dev.thielker.template.task.entity.Task
 import jakarta.enterprise.context.Dependent
 import jakarta.transaction.Transactional
@@ -9,35 +8,32 @@ import jakarta.transaction.Transactional
 class TaskService {
 
     @Transactional
-    fun getAll(): List<TaskDto> {
-        val list = Task.listAll()
-        return list.map { TaskDto.from(it) }
+    fun getAll(): List<Task> {
+        return Task.listAll()
     }
 
     @Transactional
-    fun getByPublicId(id: Long): TaskDto? {
-        val task = Task.findById(id)
-        return task?.let { TaskDto.from(it) }
+    fun getByPublicId(id: Long): Task? {
+        return Task.findById(id)
     }
 
     @Transactional
-    fun create(task: Task): TaskDto {
+    fun create(task: Task): Task {
         task.persist()
-        return TaskDto.from(task)
+        return task
     }
 
     @Transactional
-    fun update(task: Task): TaskDto {
+    fun update(task: Task): Task {
 
         if (task.id == null) throw IllegalArgumentException("Task id must not be null")
 
         Task.findById(task.id!!)?.let {
-            it.apply {
+            return it.apply {
                 name = task.name
                 description = task.description
                 checked = task.checked
             }
-            return TaskDto.from(it)
         }
         throw IllegalArgumentException("Task with id ${task.id} not found")
     }

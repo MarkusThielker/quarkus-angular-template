@@ -7,8 +7,9 @@ configuration.ts
 encoder.ts
 git_push.sh
 index.ts
+model/createTaskRequest.ts
 model/models.ts
-model/task.ts
 model/taskDto.ts
+model/updateTaskRequest.ts
 param.ts
 variables.ts
