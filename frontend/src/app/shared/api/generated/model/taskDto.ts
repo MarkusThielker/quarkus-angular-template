@@ -12,7 +12,7 @@
 
 
 export interface TaskDto { 
-    id?: number | null;
+    id?: number;
     name: string;
     description: string;
     checked?: boolean;
