@@ -78,7 +78,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 tasks.register("generateApi") {
     doLast {
         exec {
-            commandLine("openapi-generator-cli", "generate", "-g", "typescript-angular", "-i", "http://localhost:8080/q/openapi", "-o", "../frontend/src/app/shared/api/generated", "--skip-validate-spec")
+            commandLine("openapi-generator-cli", "generate", "-g", "typescript-angular", "-i", "../frontend/src/app/shared/api/openapi.yaml", "-o", "../frontend/src/app/shared/api", "--skip-validate-spec")
         }
     }
 }

@@ -60,6 +60,7 @@ quarkus:
 
   smallrye-openapi:
     path: /q/openapi
+    store-schema-directory: ../frontend/src/app/shared/api
     scan:
       packages: dev.thielker.template
 

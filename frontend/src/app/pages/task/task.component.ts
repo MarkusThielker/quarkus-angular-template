@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CreateTaskRequest, TaskDto, TaskResourceService, UpdateTaskRequest } from "../../shared/api/generated";
+import { CreateTaskRequest, TaskDto, TaskResourceService, UpdateTaskRequest } from "../../shared/api";
 
 @Component({
   selector: 'app-task',
