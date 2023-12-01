@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Task } from '../../shared/api/model/Task';
-import { TaskService } from '../../shared/service/task.service';
+import { CreateTaskRequest, TaskDto, TaskResourceService, UpdateTaskRequest } from "../../shared/api";
 
 @Component({
   selector: 'app-task',
@@ -9,41 +8,54 @@ import { TaskService } from '../../shared/service/task.service';
 })
 export class TaskComponent {
 
-  data: Task[] = [];
+  data: TaskDto[] = [];
 
   constructor(
-    private taskService: TaskService,
+    private taskService: TaskResourceService,
   ) {
     this.loadTasks();
   }
 
   loadTasks() {
-    this.taskService.getAll().subscribe(tasks => {
-      tasks.map(task => {
-        task.createdAt = new Date(task.createdAt);
-        task.updatedAt = new Date(task.updatedAt);
-      });
-      tasks.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
+    this.taskService.apiTaskGet().subscribe(tasks => {
       this.data = tasks;
       console.log('loaded', tasks);
     });
   }
 
   createTask() {
-    this.taskService.create(new Task()).subscribe(() => {
+
+    const request = {
+      name: '',
+      description: '',
+      checked: false,
+    } as CreateTaskRequest
+
+    this.taskService.apiTaskPost(request).subscribe(() => {
       console.log('created');
       this.loadTasks();
     });
   }
 
-  updateTask(task: Task) {
-    this.taskService.update(task).subscribe(() => {
+  updateTask(task: TaskDto) {
+
+    const request = {
+      id: task.id,
+      name: task.name,
+      description: task.description,
+      checked: task.checked,
+    } as UpdateTaskRequest;
+
+    this.taskService.apiTaskPut(request).subscribe(() => {
       console.log('updated', task.id);
     });
   }
 
-  deleteTask(task: Task) {
-    this.taskService.delete(task.id).subscribe(() => {
+  deleteTask(task: TaskDto) {
+
+    if (!task.id) throw new Error('task.id is undefined');
+
+    this.taskService.apiTaskIdDelete(task.id).subscribe(() => {
       console.log('deleted', task.id);
       this.loadTasks();
     });

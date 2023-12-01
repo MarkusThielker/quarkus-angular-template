@@ -37,7 +37,7 @@ class TaskMapper {
     }
 
     fun toTaskDto(task: Task) = TaskDto(
-        id = task.id,
+        id = task.id!!,
         name = task.name,
         description = task.description,
         checked = task.checked,
