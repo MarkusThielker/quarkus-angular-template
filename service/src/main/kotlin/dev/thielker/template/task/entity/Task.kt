@@ -10,27 +10,27 @@ import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
 @Entity
-class Task : PanacheEntity() {
+open class Task : PanacheEntity() {
 
     companion object : PanacheCompanion<Task>
 
     @Column(name = "name", nullable = false)
-    lateinit var name: String
+    open lateinit var name: String
 
     @Column(name = "description")
-    lateinit var description: String
+    open lateinit var description: String
 
     @Column(name = "checked", nullable = false)
     @ColumnDefault("false")
-    var checked: Boolean = false
+    open var checked: Boolean = false
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     @ColumnDefault("CURRENT_TIMESTAMP")
-    lateinit var createdAt: LocalDateTime
+    open lateinit var createdAt: LocalDateTime
 
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     @ColumnDefault("CURRENT_TIMESTAMP")
-    lateinit var updatedAt: LocalDateTime
+    open lateinit var updatedAt: LocalDateTime
 }
