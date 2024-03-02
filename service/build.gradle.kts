@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.8.22"
-    kotlin("plugin.allopen") version "1.8.22"
+    kotlin("jvm") version "1.9.22"
+    kotlin("plugin.allopen") version "1.9.22"
     id("io.quarkus")
 }
 
@@ -39,7 +39,7 @@ dependencies {
     implementation("io.quarkus:quarkus-keycloak-authorization")
 
     // Frontend
-    implementation("io.quarkiverse.quinoa:quarkus-quinoa:2.0.8")
+    implementation("io.quarkiverse.quinoa:quarkus-quinoa:2.3.4")
 
     // OpenAPI
     implementation("io.quarkus:quarkus-smallrye-openapi")
@@ -56,8 +56,8 @@ group = "dev.thielker"
 version = "0.1.0"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 tasks.withType<Test> {
@@ -71,7 +71,7 @@ allOpen {
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_21.toString()
     kotlinOptions.javaParameters = true
 }
 
